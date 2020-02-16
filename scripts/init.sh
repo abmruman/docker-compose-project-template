@@ -30,7 +30,7 @@ if [ ! -z "$NETWORK" ] && [ ! -z "$NETWORK_EXTERNAL" ]
 then
   if [ "$NETWORK_EXTERNAL" = "true" ]
   then
-    docker network ls | grep $NETWORK || docker network create $NETWORK
+    docker network ls | grep "$NETWORK" || docker network create "$NETWORK"
   else
     echo -e "Skipping network creation, not external"
   fi

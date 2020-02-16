@@ -19,7 +19,7 @@ echo
 
 read -p "Volumes: " -r ANSWER
 echo
-if [[ $ANSWER =~ ^[Yy][Ee]?[Ss]?$ ]] ; then
+if [[ "$ANSWER" =~ ^[Yy][Ee]?[Ss]?$ ]] ; then
   echo -n "Removing Volumes: "
   docker-compose down -v
 else
@@ -27,12 +27,12 @@ else
 fi
 echo
 
-if [[ ! -z $NETWORK ]] && [[ $(docker network ls | grep $NETWORK) ]] ; then
-  read -p "Network ($NETWORK): " -r ANSWER
+if [[ ! -z "$NETWORK" ]] && [[ $(docker network ls | grep "$NETWORK") ]] ; then
+  read -p "Network ("$NETWORK"): " -r ANSWER
   echo
-  if [[ $ANSWER =~ ^[Yy][Ee]?[Ss]?$ ]] ; then
-    echo -n "Removing Network: $NETWORK"
-    docker network ls | grep $NETWORK && docker network rm $NETWORK | echo
+  if [[ "$ANSWER" =~ ^[Yy][Ee]?[Ss]?$ ]] ; then
+    echo -n "Removing Network: "$NETWORK""
+    docker network ls | grep "$NETWORK" && docker network rm "$NETWORK" | echo
   else
     echo "skipping network..."
   fi
@@ -41,7 +41,7 @@ fi
 
 read -p ".env file: " -r ANSWER
 echo
-if [[ $ANSWER =~ ^[Yy][Ee]?[Ss]?$ ]] ; then
+if [[ "$ANSWER" =~ ^[Yy][Ee]?[Ss]?$ ]] ; then
   rm .env
 else
   echo "skipping .env..."
