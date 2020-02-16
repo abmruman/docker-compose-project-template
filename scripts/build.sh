@@ -7,4 +7,4 @@
 set -ev
 
 docker-compose pull
-docker-compose build
+docker-compose build --no-cache
