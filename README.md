@@ -5,6 +5,7 @@
 ### How to use
 
 - Fork and select this as template when creating a new repo on Github
+- Or click on `Use this template` and create a new repo on Github
 - Or clone/download and use locally
 - Modify `docker-compose.yml`
 - Modify `Dockerfile`
