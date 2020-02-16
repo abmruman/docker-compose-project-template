@@ -1,0 +1,30 @@
+version: "3.5"
+
+services:
+  alpine:
+    # image: alpine:${ALPINE_TAG}
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        ALPINE_TAG: ${ALPINE_TAG}
+    entrypoint: ["sh", "-c"]
+    command:
+      - echo "I'm up!"
+      # - ping localhost
+    tty: true
+    environment:
+      - ${EXAMPLE_ENV}=${EXAMPLE_ENV}
+    ports:
+      - "443:443"
+    networks:
+      - net
+    volumes:
+      - "${EXAMPLE_VOLUME}:/example"
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
+    labels:
+      example.label: "value"
+networks:
+  net:
+    external: false
+    name: ${NETWORK}
