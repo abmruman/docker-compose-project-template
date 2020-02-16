@@ -1,0 +1,24 @@
+language: bash
+
+dist: xenial
+
+services:
+  - docker
+
+stages:
+  - test
+
+before_install:
+  - docker version
+  - docker-compose version
+
+script:
+  - make
+  - make up
+  - ./scripts/wait.sh
+  - docker-compose logs
+
+after_failure:
+  - docker-compose config
+  - docker-compose ps
+  - docker-compose logs
