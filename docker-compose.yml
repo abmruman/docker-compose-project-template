@@ -26,5 +26,5 @@ services:
       example.label: "value"
 networks:
   net:
-    external: false
+    external: ${NETWORK_EXTERNAL}
     name: ${NETWORK}
