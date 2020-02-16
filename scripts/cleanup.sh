@@ -42,6 +42,7 @@ fi
 read -p ".env file: " -r ANSWER
 echo
 if [[ "$ANSWER" =~ ^[Yy][Ee]?[Ss]?$ ]] ; then
+  echo "Removing .env..."
   rm .env
 else
   echo "skipping .env..."

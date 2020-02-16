@@ -17,6 +17,8 @@ script:
   - make up
   - ./scripts/wait.sh
   - docker-compose logs
+  - make down
+  - echo -e "yes\nyes\nyes" | make clean
 
 after_failure:
   - docker-compose config
